@@ -10,20 +10,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc5afd93-fa09-4a64-b9cd-15c56e5edf9d" name="Default Changelist" comment="Wip: Migrations, seeds &amp; factories">
-      <change afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StoreController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Store.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/CategoryFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/StoreFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_09_29_210335_create_categories_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_09_29_210540_create_category_product_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/StoreTableSeeder.php" afterDir="false" />
+    <list default="true" id="cc5afd93-fa09-4a64-b9cd-15c56e5edf9d" name="Default Changelist" comment="Done: Classes de modelo, testes no eloquent e novas seeds">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/stores/editStore.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/stores/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/stores/newStore.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StoreController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +147,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/stores" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -162,6 +156,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin/stores" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -179,7 +178,10 @@
       <updated>1601388771184</updated>
       <workItem from="1601388773159" duration="2215000" />
       <workItem from="1601392386425" duration="10567000" />
-      <workItem from="1601489238163" duration="5002000" />
+      <workItem from="1601489238163" duration="10991000" />
+      <workItem from="1601940787707" duration="2538000" />
+      <workItem from="1602031463277" duration="1808000" />
+      <workItem from="1602111989404" duration="3328000" />
     </task>
     <task id="LOCAL-00001" summary="Wip: Migrations, seeds &amp; factories">
       <created>1601403029063</created>
@@ -188,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601403029063</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Done: Classes de modelo, testes no eloquent e novas seeds">
+      <created>1601496057709</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601496057709</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +218,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Wip: Migrations, seeds &amp; factories" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wip: Migrations, seeds &amp; factories" />
+    <MESSAGE value="Done: Classes de modelo, testes no eloquent e novas seeds" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done: Classes de modelo, testes no eloquent e novas seeds" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1254" height="172" key="GridCell.Tab.0.bottom" timestamp="1601392326038">
@@ -228,10 +238,10 @@
       <screen x="66" y="27" width="1300" height="741" />
     </state>
     <state width="1254" height="172" key="GridCell.Tab.0.right/66.27.1300.741@66.27.1300.741" timestamp="1601392326037" />
-    <state x="311" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1601403077000">
+    <state x="311" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1601496070402">
       <screen x="66" y="27" width="1300" height="741" />
     </state>
-    <state x="311" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2/66.27.1300.741@66.27.1300.741" timestamp="1601403077000" />
+    <state x="311" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2/66.27.1300.741@66.27.1300.741" timestamp="1601496070402" />
     <state x="379" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1601391446817">
       <screen x="66" y="27" width="1300" height="741" />
     </state>
