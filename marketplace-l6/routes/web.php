@@ -14,16 +14,23 @@
 Route::get('/', function () {
     $helloWorld = "Hello World";
     return view('welcome', compact('helloWorld'));
-//    return view('welcome', ['helloWorld' => $helloWorld]);
-});
+})->name('home');
 
 Route::get('/model', function() {
    $products = \App\Product::all();
    return $products;
 });
 
-Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
 
-    Route::resource('stores', 'StoreController');
-    Route::resource('products', 'ProductController');
+Route::group(['middleware' => ['auth']], function(){
+    Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+
+        Route::resource('stores', 'StoreController');
+        Route::resource('products', 'ProductController');
+    });
+
 });
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
