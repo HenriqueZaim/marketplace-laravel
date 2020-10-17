@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Cadastro de loja</h1>
-    <form method="post" action="{{route('admin.stores.store')}}">
+    <h1>Cadastro de produto</h1>
+    <form method="post" action="{{route('admin.products.store')}}">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="form-group">
-            <label>Nome da loja</label>
+            <label>Nome do produto</label>
             <input class="form-control" type="text" name="name" />
         </div>
         <div class="form-group">
@@ -13,12 +13,11 @@
             <input class="form-control" type="text" name="description" />
         </div>
         <div class="form-group">
-            <label>Telefone</label>
-            <input class="form-control" type="text" name="phone" />
+            <textarea name="body" class="form-control" id="" cols="30" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label>Celular</label>
-            <input class="form-control" type="text" name="mobile_phone" />
+            <label>Preço</label>
+            <input class="form-control" type="text" name="price" />
         </div>
         <div class="form-group">
             <label>Slug</label>
@@ -26,9 +25,9 @@
         </div>
         <div class="form-group">
             <label>Usuário</label>
-            <select class="form-control" name="user">
-                @foreach($users as $user)
-                    <option value="{{ $user->id }}" >{{ $user->name }}</option>
+            <select class="form-control" name="store">
+                @foreach($stores as $store)
+                    <option value="{{ $store->id }}" >{{ $store->name }}</option>
                 @endforeach
             </select>
         </div>

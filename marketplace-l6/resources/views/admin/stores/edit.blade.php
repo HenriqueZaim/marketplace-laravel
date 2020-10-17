@@ -3,7 +3,8 @@
 @section('content')
     <h1>Cadastro de loja</h1>
     <form method="post" action="{{route('admin.stores.update', ['store' => $store->id])}}">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        @csrf
+        @method('PUT')
         <div class="form-group">
             <label>Nome da loja</label>
             <input class="form-control" type="text" name="name" value="{{$store->name}}"/>
