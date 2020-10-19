@@ -2,7 +2,9 @@
 
 @section('content')
 
-    <a href="{{route('admin.products.create')}}" class="btn btn-primary">Criar produto</a>
+    <h1 class="display-4">Lista de lojas</h1>
+    <hr>
+    <a href="{{route('admin.products.create')}}" class="btn btn-primary mb-2">Criar produto</a>
     <table class="table table-striped">
         <caption>Lista de produtos</caption>
         <thead>
@@ -19,12 +21,12 @@
                     <td>{{$p->id}}</td>
                     <td>{{$p->name}}</td>
                     <td>R${{$p->price}}</td>
-                    <td>
-                        <a href="{{route('admin.products.edit', ['product' => $p->id])}}" class="btn btn-sm btn-default">Editar</a>
+                    <td class="btn-group">
+                        <a href="{{route('admin.products.edit', ['product' => $p->id])}}" class="btn btn-sm btn-warning mr-2">Editar</a>
                         <form action="{{route('admin.products.destroy', ['product' => $p->id])}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-default">Deletar</button>
+                            <button class="btn btn-sm btn-danger">Deletar</button>
 
                         </form>
                     </td>
@@ -32,9 +34,5 @@
             @endforeach
         </tbody>
     </table>
-
-    <div style="display: flex;">
-        {{ $products->links() }}
-    </div>
-
+    {{$products->links()}}
 @endsection

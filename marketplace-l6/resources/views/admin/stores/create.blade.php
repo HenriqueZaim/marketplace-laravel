@@ -6,31 +6,43 @@
         @csrf
         <div class="form-group">
             <label>Nome da loja</label>
-            <input class="form-control" type="text" name="name" />
+            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name')}}"/>
+            @error('name')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Descrição</label>
-            <input class="form-control" type="text" name="description" />
+            <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" value="{{old('description')}}"/>
+            @error('description')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Telefone</label>
-            <input class="form-control" type="text" name="phone" />
+            <input class="form-control @error('phone') is-invalid @enderror" type="text" name="phone" value="{{old('phone')}}"/>
+            @error('phone')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Celular</label>
-            <input class="form-control" type="text" name="mobile_phone" />
+            <input class="form-control @error('mobile_phone') is-invalid @enderror" type="text" name="mobile_phone" value="{{old('mobile_phone')}}"/>
+            @error('mobile_phone')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Slug</label>
             <input class="form-control" type="text" name="slug" />
-        </div>
-        <div class="form-group">
-            <label>Usuário</label>
-            <select class="form-control" name="user">
-                @foreach($users as $user)
-                    <option value="{{ $user->id }}" >{{ $user->name }}</option>
-                @endforeach
-            </select>
         </div>
         <button class="btn btn-success" type="submit">Salvar</button>
     </form>
