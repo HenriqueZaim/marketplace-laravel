@@ -41,6 +41,10 @@
             @enderror
         </div>
         <div class="form-group">
+            <label for="">Imagem</label>
+            <input type="file" name="photos[]" multiple class="form-control">
+        </div>
+        <div class="form-group">
             <label>Slug</label>
             <input class="form-control" type="text" name="slug" />
         </div>

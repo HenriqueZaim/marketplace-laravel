@@ -48,6 +48,11 @@
         @foreach($product->photos as $photo)
             <div class="col-4">
                 <img src="{{asset('storage/' . $photo->image)}}" class="img-fluid" alt="">
+                <form method="post" action="{{route('admin.photo.remove')}}">
+                    @csrf
+                    <input type="hidden" name="image" value="{{$photo->image}}">
+                    <button class="btn btn-danger btn-sm">Excluir</button>
+                </form>
             </div>
         @endforeach
     </div>
