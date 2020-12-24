@@ -2,11 +2,14 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'body', 'price', 'slug'];
+    use Sluggable;
+
+    protected $fillable = ['name', 'description', 'body', 'price'];
 
     public function store(){
         return $this->belongsTo(Store::class);
@@ -18,5 +21,13 @@ class Product extends Model
 
     public function photos(){
         return $this->hasMany(ProductPhoto::class);
+    }
+
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
     }
 }

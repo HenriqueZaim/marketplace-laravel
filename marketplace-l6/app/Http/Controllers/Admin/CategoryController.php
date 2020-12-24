@@ -26,7 +26,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->category->paginate(10);
-
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -37,7 +36,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.categories.edit');
     }
 
     /**
@@ -77,7 +76,6 @@ class CategoryController extends Controller
     public function edit($category)
     {
         $category = $this->category->findOrFail($category);
-
         return view('admin.categories.edit', compact('category'));
     }
 

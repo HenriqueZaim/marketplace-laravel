@@ -8,8 +8,11 @@ use App\Http\Requests\ProductRequest;
 use App\Store;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Traits\UploadTrait;
 
 class ProductController extends Controller{
+
+    use UploadTrait;
 
     private $product;
 
@@ -25,8 +28,13 @@ class ProductController extends Controller{
     public function index()
     {
         $store = auth()->user()->store;
-        $products = $store->products()->paginate(10);
-        return view('admin.products.index', compact('products'));
+        $products = null;
+        if(!is_null($store)){
+            $products = $store->products()->paginate(10);
+        }
+        return view('admin.products.index', compact('products', 'store'));
+
+
     }
 
     /**
@@ -37,7 +45,7 @@ class ProductController extends Controller{
     public function create()
     {
         $categories = Category::all(['id', 'name']);
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.edit', compact('categories'));
     }
 
     /**
@@ -50,13 +58,14 @@ class ProductController extends Controller{
     {
 
         $data = $request->all();
+        $categories = $request->get('categories', null);
 
         $store = auth()->user()->store;
         $product = $store->products()->create($data);
-        $product->categories()->sync($data['categories']);
+        $product->categories()->sync($categories);
 
         if ($request->hasFile('photos')){
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
             $product->photos()->createMany($images);
         }
 
@@ -98,12 +107,15 @@ class ProductController extends Controller{
     public function update(ProductRequest $request, $id)
     {
         $data = $request->all();
+        $categories = $request->get('categories', null);
         $product = Product::findOrFail($id);
         $product->update($data);
-        $product->categories()->sync($data['categories']);
+
+        if(!is_null($categories))
+            $product->categories()->sync($data['categories']);
 
         if ($request->hasFile('photos')){
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
             $product->photos()->createMany($images);
         }
 
@@ -121,19 +133,10 @@ class ProductController extends Controller{
     public function destroy($id)
     {
         $product = $this->product->findOrFail($id);
+        $product->categories()->detach();
         $product->delete();
         flash('Produto deletado com sucesso!')->success();
         return redirect()->route('admin.products.index');
     }
 
-    private function imageUpload(Request $request, $imageColumn){
-        $images = $request->file('photos');
-        $uploadedImages = [];
-
-        foreach ($images as $image){
-            $uploadedImages[] = [$imageColumn => $image->store('products', 'public')];
-        }
-
-        return $uploadedImages;
-    }
 }
